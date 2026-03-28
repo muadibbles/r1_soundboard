@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install Alien Soundboard on R1</title>
+  <style>
+    body {
+      background: #1a0a00;
+      color: #f4e4cc;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    h1 { color: #ff6b2b; font-size: 1.4rem; text-align: center; }
+    p  { color: #b08060; font-size: 0.9rem; text-align: center; max-width: 320px; }
+    #qr-canvas {
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .steps {
+      background: #2d1500;
+      border: 1px solid #3d2000;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      max-width: 320px;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    .steps ol { padding-left: 1.2rem; color: #c8b09a; }
+    .steps li  { margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+  <h1>Install on Rabbit R1</h1>
+  <p>Scan this QR code from the <strong>Creations</strong> tab on your R1</p>
+
+  <canvas id="qr-canvas"></canvas>
+
+  <div class="steps">
+    <ol>
+      <li>On your R1, open the <strong>Creations</strong> card</li>
+      <li>Tap <strong>Add via QR Code</strong></li>
+      <li>Point camera at the code above</li>
+      <li>Scroll wheel navigates · Side button plays</li>
+    </ol>
+  </div>
+
+  <!-- Lightweight QR library (no external CDN needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script>
+    // Creation manifest - R1 reads this JSON from the QR
+    const manifest = {
+      title: "Alien Soundboard",
+      url: "https://muadibbles.github.io/r1_soundboard/",
+      description: "Aliens (1986) soundboard with R1 hardware controls",
+      iconUrl: "",
+      themeColor: "#ff6b2b"
+    };
+
+    QRCode.toCanvas(
+      document.getElementById("qr-canvas"),
+      JSON.stringify(manifest),
+      { width: 220, margin: 1, color: { dark: "#000000", light: "#ffffff" } },
+      (err) => { if (err) console.error(err); }
+    );
+  </script>
+</body>
+</html>

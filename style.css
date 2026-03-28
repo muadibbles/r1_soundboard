@@ -4,82 +4,88 @@
   padding: 0;
 }
 
-body {
+/* ── R1 fixed canvas: 240×282px ── */
+html, body {
+  width: 240px;
+  height: 282px;
+  overflow: hidden;
   background: #1a0a00;
   color: #f4e4cc;
   font-family: "Segoe UI", system-ui, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
+  user-select: none;
 }
 
+/* ── Header strip ── */
 header {
-  text-align: center;
-  margin-bottom: 2.5rem;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2d1500;
+  border-bottom: 1px solid #ff6b2b44;
+  flex-shrink: 0;
 }
 
 header h1 {
-  font-size: 2.2rem;
+  font-size: 0.75rem;
   color: #ff6b2b;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-header p {
-  margin-top: 0.4rem;
-  color: #b08060;
-  font-size: 0.95rem;
-}
-
+/* ── Scrollable button list ── */
 #soundboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  max-width: 780px;
+  height: 254px;          /* 282 - 28px header */
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px 4px;
+  scroll-behavior: smooth;
 }
 
+/* Hide scrollbar visually */
+#soundboard::-webkit-scrollbar { display: none; }
+
+/* ── Sound buttons ── */
 .sound-btn {
+  width: 100%;
+  height: 36px;
   background: #2d1500;
-  border: 2px solid #ff6b2b;
-  border-radius: 10px;
-  color: #f4e4cc;
+  border: 1px solid #3d2000;
+  border-radius: 6px;
+  color: #c8b09a;
   cursor: pointer;
-  font-size: 0.95rem;
-  padding: 1.1rem 0.75rem;
-  text-align: center;
-  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
-  word-break: break-word;
+  font-size: 0.72rem;
+  padding: 0 8px;
+  text-align: left;
+  flex-shrink: 0;
+  transition: background 0.1s;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.sound-btn:hover {
+/* Scroll-wheel selection highlight */
+.sound-btn.selected {
   background: #3d2000;
-  box-shadow: 0 0 12px #ff6b2b88;
+  border-color: #ff6b2b;
+  color: #f4e4cc;
 }
 
-.sound-btn:active,
+/* Active / playing state */
 .sound-btn.playing {
   background: #ff6b2b;
+  border-color: #ff9955;
   color: #1a0a00;
-  transform: scale(0.96);
+  font-weight: 600;
 }
 
+/* Error state */
 .sound-btn.error {
   border-color: #cc3333;
-  color: #cc3333;
-}
-
-footer {
-  margin-top: 3rem;
-  color: #604030;
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-footer code {
-  background: #2d1500;
-  border-radius: 4px;
-  padding: 0 4px;
-  color: #ff9955;
+  color: #cc5555;
 }
