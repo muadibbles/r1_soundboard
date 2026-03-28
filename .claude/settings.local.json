@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://api.github.com/repos/muadibbles/gfx_pipeline/contents && echo \"===\" && curl -s https://api.github.com/repos/muadibbles/r1_soundboard/contents)",
+      "Bash(curl -s https://api.github.com/repos/muadibbles/gfx_pipeline && echo \"===\" && curl -s https://api.github.com/repos/muadibbles/r1_soundboard)",
+      "Bash(curl -s https://api.github.com/repos/muadibbles/gfx_pipeline/contents)",
+      "Bash(curl -s https://api.github.com/repos/muadibbles/gfx_pipeline/branches)",
+      "Bash(curl -s \"https://api.github.com/repos/muadibbles/gfx_pipeline/contents?ref=claude/rabbit-r1-soundboard-AKUzH\")",
+      "Bash(curl -s \"https://api.github.com/repos/muadibbles/gfx_pipeline/contents/soundboard?ref=claude/rabbit-r1-soundboard-AKUzH\")",
+      "Bash(cp -r \"C:\\\\Users\\\\filla\\\\projects\\\\r1_soundboard\\\\_tmp_clone\\\\soundboard/.\" \"C:\\\\Users\\\\filla\\\\projects\\\\r1_soundboard\" && rm -rf \"C:\\\\Users\\\\filla\\\\projects\\\\r1_soundboard/_tmp_clone\" && ls \"C:\\\\Users\\\\filla\\\\projects\\\\r1_soundboard\")"
+    ]
+  }
+}
