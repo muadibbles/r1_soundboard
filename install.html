@@ -41,7 +41,11 @@
   <h1>Install on Rabbit R1</h1>
   <p>Scan this QR code from the <strong>Creations</strong> tab on your R1</p>
 
-  <canvas id="qr-canvas"></canvas>
+  <!-- QR code generated via qrserver.com image API — no JS library needed -->
+  <img id="qr-img"
+       alt="QR code"
+       style="background:white; padding:12px; border-radius:8px; width:220px; height:220px;"
+  />
 
   <div class="steps">
     <ol>
@@ -52,10 +56,8 @@
     </ol>
   </div>
 
-  <!-- Lightweight QR library (no external CDN needed) -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
-    // Creation manifest - R1 reads this JSON from the QR
+    // Creation manifest encoded into the QR
     const manifest = {
       title: "Alien Soundboard",
       url: "https://muadibbles.github.io/r1_soundboard/",
@@ -64,12 +66,9 @@
       themeColor: "#ff6b2b"
     };
 
-    QRCode.toCanvas(
-      document.getElementById("qr-canvas"),
-      JSON.stringify(manifest),
-      { width: 220, margin: 1, color: { dark: "#000000", light: "#ffffff" } },
-      (err) => { if (err) console.error(err); }
-    );
+    const data = encodeURIComponent(JSON.stringify(manifest));
+    document.getElementById("qr-img").src =
+      `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=1&data=${data}`;
   </script>
 </body>
 </html>
