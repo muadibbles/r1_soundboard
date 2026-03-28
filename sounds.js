@@ -8,5 +8,4 @@ const SOUNDS = [
   { label: "Express Elevator to Hell", file: "sounds/express_elevator.mp3" },
   { label: "Mostly at Night",          file: "sounds/mostly_at_night.mp3" },
   { label: "I Hate This Job",          file: "sounds/i_hate_this_job.mp3" },
-  { label: "IQ Drop",                  file: "sounds/iq_drop.mp3" },
 ];
